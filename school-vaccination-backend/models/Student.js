@@ -1,15 +1,14 @@
 const mongoose = require('mongoose');
 
 const studentSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    class: { type: String, required: true },
-    studentID: { type: String, required: true, unique: true },
-    vaccinationRecords: [
-        {
-            vaccineName: String,
-            date: Date,
-        }
-    ]
-});
+  studentId: { type: String, required: true, unique: true },
+  name: { type: String, required: true },
+  class: { type: String, required: true },
+  vaccinated: [{
+    vaccineId: { type: mongoose.Schema.Types.ObjectId, ref: 'Drive' },
+    vaccineName: String,
+    date: Date
+  }]
+}, { timestamps: true });
 
 module.exports = mongoose.model('Student', studentSchema);
