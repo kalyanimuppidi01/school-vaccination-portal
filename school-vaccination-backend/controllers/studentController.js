@@ -1,5 +1,42 @@
 const Student = require('../models/Student');
 const Drive = require('../models/Drive');
+const fs = require("fs");
+const path = require("path");
+const csv = require("csv-parser");
+
+exports.bulkImport = async (req, res) => {
+  const filePath = req.file?.path;
+  if (!filePath) return res.status(400).json({ error: "CSV file required" });
+
+  const students = [];
+
+  fs.createReadStream(filePath)
+    .pipe(csv())
+    .on("data", (row) => {
+      if (row.studentId && row.name && row.class) {
+        students.push({
+          studentId: row.studentId.trim(),
+          name: row.name.trim(),
+          class: row.class.trim(),
+        });
+      }
+    })
+    .on("end", async () => {
+      try {
+        await Student.insertMany(students, { ordered: false });
+        fs.unlinkSync(filePath); // delete temp file
+        res.json({ message: "Students imported successfully", count: students.length });
+      } catch (err) {
+        fs.unlinkSync(filePath);
+        res.status(500).json({ error: "Import failed", details: err.message });
+      }
+    })
+    .on("error", (err) => {
+      fs.unlinkSync(filePath);
+      res.status(500).json({ error: "CSV read error", details: err.message });
+    });
+};
+
 
 // Add new student
 exports.addStudent = async (req, res) => {
@@ -64,3 +101,4 @@ exports.markVaccinated = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
