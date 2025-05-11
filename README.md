@@ -5,14 +5,14 @@ A full-stack web application built for managing school vaccination drives, enabl
 
 ## 📌 Table of Contents
 
-- [Features](#Features)
-- [Architecture](#architecture)
-- [Tech Stack](#tech-stack)
-- [Setup Instructions](#setup-instructions)
-- [API Endpoints](#api-endpoints)
-- [Database Models](#database-models)
-- [Assumptions](#assumptions)
-- [License](#license)
+- Features
+- Architecture
+- Tech Stack
+- Setup Instructions
+- API Endpoints
+- Database Models
+- Assumptions
+- License
 
 ---
 
