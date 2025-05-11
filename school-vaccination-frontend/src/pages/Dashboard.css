@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+.dashboard-page {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom right, #dbeafe, #ffffff);
+  padding: 3rem 2rem;
+  min-height: 100vh;
+}
+
+.dashboard-container {
+  max-width: 1200px;
+  margin: auto;
+  background: white;
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.logout-button {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 0.85rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.logout-button:hover {
+  background: #dc2626;
+}
+
+.dashboard-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.5px;
+}
+
+.dashboard-subtitle {
+  color: #475569;
+  font-size: 1rem;
+  max-width: 900px;
+  line-height: 1.6;
+}
+
+.dashboard-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.dashboard-buttons button {
+  padding: 0.6rem 1.2rem;
+  font-weight: 500;
+  border-radius: 10px;
+  border: none;
+  font-size: 0.9rem;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.dashboard-buttons .students { background: #3b82f6; }
+.dashboard-buttons .students:hover { background: #2563eb; }
+.dashboard-buttons .drives { background: #10b981; }
+.dashboard-buttons .drives:hover { background: #059669; }
+.dashboard-buttons .reports { background: #8b5cf6; }
+.dashboard-buttons .reports:hover { background: #7c3aed; }
+
+.dashboard-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.stat-card {
+  background: #f9fafb;
+  border: 1px solid #e0e7ff;
+  padding: 1.5rem;
+  border-radius: 14px;
+  flex: 1;
+  min-width: 240px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.02);
+}
+
+.stat-card h2 {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+.stat-card p {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1e3a8a;
+}
+
+/* Grid for middle section */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2rem;
+}
+
+/* Section cards (for chart, alerts, drives, etc.) */
+.section {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.03);
+}
+
+.section h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.section ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  color: #374151;
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.section p {
+  font-size: 0.95rem;
+  color: #6b7280;
+}
+
+.section li + h2 {
+  margin-top: 2rem;
+}

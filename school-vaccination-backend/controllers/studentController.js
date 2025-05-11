@@ -54,17 +54,28 @@ exports.getStudents = async (req, res) => {
     const { name, class: studentClass, id, vaccinated } = req.query;
     let filter = {};
 
-    if (name) filter.name = new RegExp(name, 'i');
+    if (name) filter.name = new RegExp(name, "i");
     if (studentClass) filter.class = studentClass;
     if (id) filter.studentId = id;
-    if (vaccinated) filter['vaccinated.0'] = vaccinated === 'true' ? { $exists: true } : { $exists: false };
+    if (vaccinated) {
+      filter["vaccinated.0"] =
+        vaccinated === "true" ? { $exists: true } : { $exists: false };
+    }
 
     const students = await Student.find(filter);
-    res.json(students);
+
+    // Add registeredDrives field for frontend
+    const enriched = students.map(s => ({
+      ...s.toObject(),
+      registeredDrives: (s.registered || []).map(r => r.driveId)
+    }));
+
+    res.json(enriched);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
+
 
 // Update student details
 exports.updateStudent = async (req, res) => {
@@ -89,6 +100,12 @@ exports.markVaccinated = async (req, res) => {
     const alreadyVaccinated = student.vaccinated.find(v => v.vaccineId.toString() === driveId);
     if (alreadyVaccinated) return res.status(400).json({ error: 'Student already vaccinated for this drive' });
 
+    // Check if student's class is in drive's applicableClasses
+if (!drive.applicableClasses.includes(student.class)) {
+  return res.status(400).json({ error: `This drive is not applicable to class ${student.class}` });
+}
+
+
     student.vaccinated.push({
       vaccineId: drive._id,
       vaccineName: drive.vaccineName,
@@ -101,4 +118,68 @@ exports.markVaccinated = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+exports.getVaccineSummary = async (req, res) => {
+  try {
+    const students = await Student.find();
+
+    const summary = {};
+
+    for (const student of students) {
+      const vaccinatedNames = student.vaccinated.map(v => v.vaccineName);
+
+      vaccinatedNames.forEach(name => {
+        if (!summary[name]) summary[name] = { vaccinated: 0, unvaccinated: 0 };
+        summary[name].vaccinated += 1;
+      });
+    }
+
+    // Count unvaccinated students for each vaccine
+    for (const name in summary) {
+      const total = await Student.countDocuments({
+        "vaccinated.vaccineName": { $ne: name }
+      });
+      summary[name].unvaccinated = total;
+    }
+
+    // Convert to array format
+    const result = Object.keys(summary).map(vaccineName => ({
+      vaccineName,
+      vaccinatedCount: summary[vaccineName].vaccinated,
+      unvaccinatedCount: summary[vaccineName].unvaccinated,
+    }));
+
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+exports.registerForDrive = async (req, res) => {
+  try {
+    const { studentId, driveId } = req.body;
+    const student = await Student.findOne({ studentId });
+    if (!student) return res.status(404).json({ error: "Student not found" });
+
+    const alreadyRegistered = student.registered?.some(r => r.driveId.toString() === driveId);
+    if (alreadyRegistered) return res.status(400).json({ error: "Already registered for this drive" });
+
+    student.registered = student.registered || [];
+    student.registered.push({ driveId, date: new Date() });
+
+    await student.save();
+    res.json({
+      message: "Student registered successfully",
+      student: {
+        ...student.toObject(),
+        registeredDrives: student.registered.map(r => r.driveId)
+      }
+    });
+    
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+
 

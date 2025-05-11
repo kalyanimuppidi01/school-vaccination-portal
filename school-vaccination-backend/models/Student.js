@@ -8,7 +8,14 @@ const studentSchema = new mongoose.Schema({
     vaccineId: { type: mongoose.Schema.Types.ObjectId, ref: 'Drive' },
     vaccineName: String,
     date: Date
-  }]
+  }],
+  registered: [{
+    driveId: { type: mongoose.Schema.Types.ObjectId, ref: 'Drive' },
+    date: Date
+  }],
+  registeredDrives: [{ type: mongoose.Schema.Types.ObjectId, ref: "Drive" }],
+
+  
 }, { timestamps: true });
 
 module.exports = mongoose.model('Student', studentSchema);

@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+.students-page {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom right, #dbeafe, #ffffff);
+  padding: 3rem 2rem;
+  min-height: 100vh;
+}
+
+.students-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.students-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.5px;
+}
+
+.students-header .desc {
+  font-size: 1rem;
+  color: #475569;
+  margin-bottom: 2rem;
+}
+
+.section {
+  background: #ffffff;
+  padding: 1.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.section h2 {
+  font-weight: 600;
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+  color: #1f2937;
+}
+
+.students-form input,
+.students-form select {
+  padding: 0.6rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.students-form button {
+  background: #2563eb;
+  color: white;
+  font-weight: 500;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.students-form button:hover {
+  background: #1d4ed8;
+}
+
+.bulk-upload input[type="file"] {
+  border: 1px solid #cbd5e1;
+  padding: 0.5rem;
+  border-radius: 8px;
+  margin-right: 1rem;
+}
+
+.bulk-upload button {
+  background: #2563eb;
+  color: white;
+  font-weight: 500;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.bulk-upload button:disabled {
+  background: #93c5fd;
+  cursor: not-allowed;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+th, td {
+  padding: 0.75rem;
+  border: 1px solid #e5e7eb;
+  text-align: center;
+}
+
+th {
+  background: #f1f5f9;
+  color: #374151;
+  font-weight: 500;
+}
+
+tr:nth-child(even) {
+  background: #f9fafb;
+}
+
+.action-button {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  cursor: pointer;
+  background-color: #f1f5f9;
+  color: #1e3a8a;
+  border: 1px solid #cbd5e1;
+  transition: background 0.3s ease;
+}
+
+.action-button:hover {
+  background-color: #e2e8f0;
+}
+
+.action-button.edit {
+  background: #fbbf24;
+  color: white;
+  border-radius: 6px;
+  font-size: 0.8rem;
+}
+
+.action-button.edit:hover {
+  background: #f59e0b;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content input {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.modal-actions button {
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 500;
+  border: none;
+}
+
+.modal-actions .cancel {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.modal-actions .save {
+  background: #2563eb;
+  color: white;
+}
