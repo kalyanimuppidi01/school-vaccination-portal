@@ -85,7 +85,7 @@ cd school-vaccination-portal
 cd school-vaccination-backend
 npm install
 cp .env.example .env # Provide your MongoDB URI and port
-npm start
+node server.js
 ```
 
 ### 3. Frontend Setup
@@ -93,7 +93,7 @@ npm start
 ```bash
 cd ../school-vaccination-frontend
 npm install
-npm start
+npm run dev
 ```
 
 Frontend should now be running at `http://localhost:3000`, and backend at `http://localhost:5000`.
