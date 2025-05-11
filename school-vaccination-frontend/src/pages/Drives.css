@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+.drives-page {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom right, #f0f9ff, #ffffff);
+  padding: 3rem 2rem;
+  min-height: 100vh;
+}
+
+.drives-container {
+  max-width: 1100px;
+  margin: auto;
+  background: white;
+  border-radius: 20px;
+  padding: 2.5rem;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+}
+
+.back-button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    border-radius: 9999px;
+    font-weight: 500;
+    cursor: pointer;
+    background-color: #f1f5f9;
+    color: #1e3a8a;
+    border: 1px solid #cbd5e1;
+    transition: background 0.3s ease;
+}
+
+.back-button:hover {
+  background: #d1d5db;
+}
+
+.drives-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin-bottom: 0.25rem;
+}
+
+.drives-subtitle {
+  font-size: 1rem;
+  color: #475569;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  max-width: 900px;
+}
+
+.form-section,
+.table-section {
+  background: #f9fafb;
+  border: 1px solid #e2e8f0;
+  padding: 2rem;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.form-section h2,
+.table-section h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #0f766e;
+  margin-bottom: 1.5rem;
+}
+
+input {
+  padding: 0.75rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+button[type="submit"] {
+  background-color: #10b981;
+  color: white;
+  font-weight: 500;
+  padding: 0.7rem 1.4rem;
+  border: none;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #059669;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+th, td {
+  padding: 0.75rem;
+  border: 1px solid #e5e7eb;
+  text-align: center;
+}
+
+th {
+  background: #f1f5f9;
+  font-weight: 600;
+  color: #374151;
+}
+
+td {
+  color: #374151;
+}
+
+.edit-button {
+  color: #2563eb;
+  font-weight: 500;
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+
+.edit-button:hover {
+  text-decoration: underline;
+}
+
+.delete-button {
+  color: #dc2626;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  text-decoration: underline;
+}
+
+/* Modal styling */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #1e3a8a;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.modal-actions button {
+  padding: 0.6rem 1.2rem;
+  font-weight: 500;
+  border-radius: 10px;
+  border: none;
+}
+
+.modal-actions .cancel {
+  background: #e5e7eb;
+  color: #1f2937;
+}
+
+.modal-actions .save {
+  background: #2563eb;
+  color: white;
+}
